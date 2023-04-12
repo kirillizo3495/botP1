@@ -14,10 +14,16 @@ def print_hi(name):
     name = input()
     print("А сколько тебе лет?")
     old = int(input())
-    if old <= 20:
-        print("Ооо ты очень молодой ", name ,".")
-    else:
-        print('Ого тебе уже больше 20 ты уже староват', name)
+    print("Какой у тебя пол? Напиши м если мужской и ж если женский")
+    pol = input()
+    if old <= 20 and pol == 'м':
+        print("Ооо ты очень молодой мальчик", name)
+    elif old <= 20 and pol == 'ж':
+        print("Ооо ты очень молодая девочка", name)
+    elif old >= 20 and pol == 'м':
+        print("Тебе уже больше 20 ты уже староват", name)
+    elif old >= 20 and pol == 'ж':
+        print("Тебе уже больше 20 ты уже старовата", name)
 
 
 if __name__ == '__main__':
