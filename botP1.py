@@ -7,9 +7,9 @@ BOT_TOKEN: str = '6064408255:AAGBbsdGXRGz70OfVSxpp7mlVOQHxxogsVU'
 TEXT: str = 'что ты мне пишешь?'
 MAX_COUNTER: int = 100             #это количество итераций цикла, в котором мы получаем апдейты от сервера.
 
-offset: int = -2
-counter: int = 0
-chat_id: int
+offset: int = -2                   # чтобы получать апдейты
+counter: int = 0                   # когда эта переменная будет равна MAX_COUNTER
+chat_id: int                       #
 
 
 while counter < MAX_COUNTER:

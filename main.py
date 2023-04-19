@@ -24,8 +24,9 @@ def print_hi(name):
         print("Тебе уже больше 20 ты уже староват", name)
     elif old >= 20 and pol == 'ж':
         print("Тебе уже больше 20 ты уже старовата", name)
-
-
+    print("Как у тебя настроение?")
+    nas = input()
+    print("привет")
 if __name__ == '__main__':
     print_hi('PyCharm')
 
