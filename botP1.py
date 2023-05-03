@@ -20,7 +20,7 @@ while counter < MAX_COUNTER:
     #https://api.telegram.org/bot6064408255:AAGBbsdGXRGz70OfVSxpp7mlVOQHxxogsVU/getUpdates?offset=436827543
     if updates['result']:
         pprint(updates["result"])
-        pprint(updates["result"][0]['update_id'])
+        pprint(updates["result"][0]["username"])
         pprint(updates["result"][1]['update_id'])
 
 
