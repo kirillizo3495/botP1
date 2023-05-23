@@ -32,15 +32,39 @@ rock = ['Metallica-Master Of Puppets https://www.youtube.com/watch?v=E0ozmU9cJDg
         'Nautilus Pompilius-Матерь богов https://www.youtube.com/watch?v=GbX-UqR3D6A',
         'Агата Кристи-Как на войне https://www.youtube.com/watch?v=1fm1XCJAY0s',]
 
-pop_music= ['Руки Вверх!-18 мне уже', 'Руки Вверх!-Выпускной', 'Руки Вверх!-Когда мы были молодыми',
-            'Руки Вверх!-Студент', 'Руки Вверх!-Ай-яй-яй', 'Иванушки International-Тополиный пух',
-            'Иванушки International-Снегири', 'Градусы-Научиться бы не париться', 'Градусы-Хочется',
-            'Ласковый май-Белые розы', 'Ласковый май-Седая ночь', 'Ласковый май-Детство',]
+pop_music= ['Руки Вверх!-18 мне уже https://www.youtube.com/watch?v=N6UfSfNcnqw',
+            'Руки Вверх!-Выпускной https://www.youtube.com/watch?v=aFC2idsSXnk',
+            'Руки Вверх!-Когда мы были молодыми https://www.youtube.com/watch?v=86O8yX3ogxE',
+            'Руки Вверх!-Студент https://www.youtube.com/watch?v=gRW89Oqk0QI',
+            'Руки Вверх!-Ай-яй-яй https://www.youtube.com/watch?v=11ymi0FmBUw',
+            'Иванушки International-Тополиный пух https://www.youtube.com/watch?v=UUryvYF8tUs',
+            'Градусы-Научиться бы не париться https://www.youtube.com/watch?v=5oD_SsE-iXM',
+            'Градусы-Хочется https://www.youtube.com/watch?v=Puy6whV8nc0',
+            'Ласковый май-Белые розы https://www.youtube.com/watch?v=bK_HiQka7ck',
+            'Ласковый май-Седая ночь https://www.youtube.com/watch?v=_VJYsPRk4fg',
+            'Ласковый май-Детство https://www.youtube.com/watch?v=G9z3j7Jdd0M',]
 
-classic=['Бах-Nocturne in E Flat Major Op. 9, No. 2', 'Бах-Sonata in C Major K.330: I. Allegro',
-         'Бах-Sonata Op. 13, No. 8 in C Minor', 'Бах-Sonatina in C Major Op. 36, Spiritoso']
+classic=['Бах-Nocturne in E Flat Major Op. 9, No. 2 https://www.youtube.com/watch?v=p29JUpsOSTE',
+         'Бах-Sonata in C Major K.330: I. Allegro https://www.youtube.com/watch?v=3UQs0r56Wwo',
+         'Бах-Sonata Op. 13, No. 8 in C Minor https://www.youtube.com/watch?v=91MTUXla-lE',
+         'Бах-Sonatina in C Major Op. 36, Spiritoso https://www.youtube.com/watch?v=8vR9vvjR2_k']
 
-punk_rock =['Король и Шут-Театральный демон вот ссылка: https://www.youtube.com/watch?v=j0i_E3Btuo0']
+punk_rock =['Король и Шут-Театральный демон https://www.youtube.com/watch?v=j0i_E3Btuo0',
+            'Король и Шут-Кукла колдуна https://www.youtube.com/watch?v=Nj6aM9ljdQU',
+            'Король и Шут-Лесник https://www.youtube.com/watch?v=i7R6_7e10QM',
+            'Король и Шут-Дурак и молния https://www.youtube.com/watch?v=svCPBhiZD8g',
+            'Сектор газа-Туман https://www.youtube.com/watch?v=p2ZbgHYONHk',
+            'КняZz-Адель https://www.youtube.com/watch?v=-Atmfn2mASc',
+            'КняZz-Человек-загадка https://www.youtube.com/watch?v=JDfsZTA1yHU',
+            'КняZz-Брат https://www.youtube.com/watch?v=ofsp-1s2k9M',
+            'КняZz-Дом манекенов https://www.youtube.com/watch?v=0Dycarg0Qh0',
+            'КняZz-Пассажир https://www.youtube.com/watch?v=Rn7Oyxa1bEM',
+            'КняZz-Банник https://www.youtube.com/watch?v=Etyy-Eox7pU',
+            'КняZz-Видел Вия – вот те крест! https://www.youtube.com/watch?v=Ym6Qm9lvMyw',
+            'КняZz-Романс https://www.youtube.com/watch?v=dzNQ0xyqrGU',
+            'Король и Шут-Мёртвый Анархист https://www.youtube.com/watch?v=dDqqq8IMUvQ',
+            'Король и Шут-Танец злобного гения https://www.youtube.com/watch?v=1LJ_g2bPQDA',
+            'Король и Шут-Воспоминания о былой любви https://www.youtube.com/watch?v=3QjZoV87yCM']
 
 
 # Создаем объекты бота и диспетчера
@@ -48,96 +72,86 @@ bot: Bot = Bot(BOT_TOKEN)
 dp: Dispatcher = Dispatcher()
 
 # Создаем объекты кнопок
-button_1: KeyboardButton = KeyboardButton(text='Грустное')
-button_2: KeyboardButton = KeyboardButton(text='Веселое')
+button_1: KeyboardButton = KeyboardButton(text='Грустно😔')
+button_2: KeyboardButton = KeyboardButton(text='Весело😆')
 
 # Создаем объект клавиатуры, добавляя в него кнопки
 keyboard: ReplyKeyboardMarkup = ReplyKeyboardMarkup(
-                                    keyboard=[[button_1, button_2]])
+                                    keyboard=[[button_1, button_2]],
+                                    resize_keyboard=True)
 
-# Создаем кнопки игровой клавиатуры
-button_1: KeyboardButton = KeyboardButton(text='Рок')
-button_2: KeyboardButton = KeyboardButton(text='Панк рок')
-button_3: KeyboardButton = KeyboardButton(text='Поп-музыка')
-button_4: KeyboardButton = KeyboardButton(text='Классическая')
-# Создаем игровую клавиатуру с кнопками "Камень 🗿",
-# "Ножницы ✂" и "Бумага 📜" как список списков
+# Создаем кнопки
+button_1: KeyboardButton = KeyboardButton(text='Рок🎸')
+button_2: KeyboardButton = KeyboardButton(text='Панк рок🎸')
+button_3: KeyboardButton = KeyboardButton(text='Поп-музыка🎹')
+button_4: KeyboardButton = KeyboardButton(text='Классическая🎻')
+
+
 game_kb: ReplyKeyboardMarkup = ReplyKeyboardMarkup(
-                                    keyboard=[[button_1],
-                                              [button_2],
-                                              [button_3],
-                                              [button_4]],
+                                    keyboard=[[button_1, button_2],
+                                              [button_3, button_4]],
                                     resize_keyboard=True)
 # Словарь, в котором будут храниться данные пользователя
 
+button_1: KeyboardButton = KeyboardButton(text='Давай✅')
+button_2: KeyboardButton = KeyboardButton(text='Нет, не хочу!❌')
 
-
+yes_no: ReplyKeyboardMarkup = ReplyKeyboardMarkup(
+                                    keyboard=[[button_1,button_2]],
+                                    resize_keyboard=True)
 
 
 # Этот хэндлер будет срабатывать на команду "/start"
 @dp.message(Command(commands=['start']))
 async def process_start_command(message: Message):
-    await message.answer('Привет!\nкакая тебе музыка нравится,',
+    await message.answer('Привет!\nкак настроение?,',
                          reply_markup=keyboard)
     # Если пользователь только запустил бота и его нет в словаре '
     # 'users - добавляем его в словарь
 
 
 # Этот хэндлер срабатывает на согласие пользователя играть в игру
-@dp.message(Text(text="Грустное"))
+@dp.message(Text(text="Грустно😔"))
 async def process_yes_answer(message: Message):
-    await message.answer('Ясно, а какой тип музыки тебе нравится?', reply_markup=game_kb)
+    await message.answer('Ясно, этот бот поможет найти подходящую песню. Кстати, а какой тип музыки тебе нравится?', reply_markup=game_kb)
 
-@dp.message(Text(text="Веселое"))
+@dp.message(Text(text="Весело😆"))
 async def process_yes_answer(message: Message):
-    await message.answer('Хорошо, а какой тип музыки тебе нравится?', reply_markup=game_kb)
+    await message.answer('Хорошо, этот бот поможет найти подходящую песню. Кстати, а какой тип музыки тебе нравится?', reply_markup=game_kb)
 
-@dp.message(Text(text="Рок"))
+@dp.message(Text(text="Рок🎸"))
 async def process_yes_answer(message: Message):
-    await message.answer("Советую послушать")
     await message.answer(random.choice(rock))
-@dp.message(Text(text="Панк рок"))
+    await message.answer("Советую послушать,может еще что-то хочешь послушать?", reply_markup=yes_no)
+@dp.message(Text(text="Панк рок🎸"))
 async def process_yes_answer(message: Message):
-    await message.answer("Советую послушать")
     await message.answer(random.choice(punk_rock))
+    await message.answer("Советую послушать,может еще что-то хочешь послушать?", reply_markup=yes_no)
 
-@dp.message(Text(text="Поп-музыка"))
+
+@dp.message(Text(text="Поп-музыка🎹"))
 async def process_yes_answer(message: Message):
-    await message.answer('Советую послушать')
     await message.answer(random.choice(pop_music))
-@dp.message(Text(text="Классическая"))
+    await message.answer('Советую послушать,может еще что-то хочешь послушать?', reply_markup=yes_no)
+@dp.message(Text(text="Классическая🎻"))
 async def process_yes_answer(message: Message):
-    await message.answer("Советую послушать")
-    await message.answer('Советую тебе послушать')
+    await message.answer(random.choice(classic))
+    await message.answer("Советую послушать,может еще что-то хочешь послушать?", reply_markup=yes_no)
 # Этот хэндлер будет срабатывать на команду "/help"
 @dp.message(Command(commands=['help']))
 async def process_help_command(message: Message):
-    await message.answer(f'Правила игры:\n\nЯ загадываю число от 1 до 100, '
-                         f'а вам нужно его угадать\nУ вас есть  '
-                         f'попыток\n\nДоступные команды:\n/help - правила '
-                         f'игры и список команд\n/cancel - выйти из игры\n'
-                         f'/stat - посмотреть статистику\n\nДавай сыграем?')
+    await message.answer('Я посоветую тебе музыку на твой вкус')
+
+@dp.message(Text(text="Давай✅"))
+async def process_yes_answer(message: Message):
+    await message.answer("Какой тип музыки хочешь послушать?", reply_markup=game_kb)
+
+@dp.message(Text(text="Нет, не хочу!❌"))
+async def process_yes_answer(message: Message):
+    await message.answer("Ладно, как захочешь напиши /start", reply_markup=ReplyKeyboardRemove())
 
 
-# Этот хэндлер будет срабатывать на команду "/stat"
-@dp.message(Command(commands=['stat']))
-async def process_stat_command(message: Message):
-    await message.answer(
-                    f'Всего игр сыграно: '
-                    f'{users[message.from_user.id]["total_games"]}\n'
-                    f'Игр выиграно: {users[message.from_user.id]["wins"]}')
 
-
-# Этот хэндлер будет срабатывать на команду "/cancel"
-@dp.message(Command(commands=['cancel']))
-async def process_cancel_command(message: Message):
-    if users[message.from_user.id]['in_game']:
-        await message.answer('Вы вышли из игры. Если захотите сыграть '
-                             'снова - напишите об этом')
-        users[message.from_user.id]['in_game'] = False
-    else:
-        await message.answer('А мы итак с вами не играем. '
-                             'Может, сыграем разок?')
 
 
 # Этот хэндлер будет срабатывать на согласие пользователя сыграть в игру
