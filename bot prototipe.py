@@ -14,12 +14,23 @@ router: Router = Router()
 # полученный у @BotFather
 BOT_TOKEN: str = '6064408255:AAGBbsdGXRGz70OfVSxpp7mlVOQHxxogsVU'
 
-rock = ['Metallica-Master Of Puppets', 'Metallica-Sad But True', 'Metallica-Fade To Black',
-        'Nirvana-Smells Like Teen Spirit', 'Nirvana-Come As You Are', 'Nirvana-Heart-Shaped Box',
-        'КИНО-Хочу перемен', 'КИНО-Группа крови', 'КИНО-Звезда по имени Солнце', 'КИНО-Пачка сигарет',
-        'КИНО-Кончится лето', 'КИНО-Стук', 'КИНО-Последний герой', 'Би-2-Полковнику никто не пишет',
-        'Nautilus Pompilius-Крылья', 'Nautilus Pompilius-Зверь', 'Nautilus Pompilius-Матерь богов',
-        'Агата Кристи-Как на войне',]
+rock = ['Metallica-Master Of Puppets https://www.youtube.com/watch?v=E0ozmU9cJDg',
+        'Metallica-Sad But True https://www.youtube.com/watch?v=TpohVYomw2o',
+        'Metallica-Fade To Black https://www.youtube.com/watch?v=9HZ_tx8aWuA',
+        'Nirvana-Smells Like Teen Spirit https://www.youtube.com/watch?v=hTWKbfoikeg',
+        'Nirvana-Come As You Are https://www.youtube.com/watch?v=vabnZ9-ex7o',
+        'КИНО-Хочу перемен https://www.youtube.com/watch?v=-vdfEZwPd3M',
+        'КИНО-Группа крови https://www.youtube.com/watch?v=xtxjm7ciwmc',
+        'КИНО-Звезда по имени Солнце https://www.youtube.com/watch?v=Z4jQ4hZfk00',
+        'КИНО-Пачка сигарет https://www.youtube.com/watch?v=Zj88LoDlSxQ',
+        'КИНО-Кончится лето https://www.youtube.com/watch?v=iOvYGQtFBNM',
+        'КИНО-Стук https://www.youtube.com/watch?v=0Cih47XDcNw',
+        'КИНО-Последний герой https://www.youtube.com/watch?v=ufNgB0POzzY',
+        'Би-2-Полковнику никто не пишет https://www.youtube.com/watch?v=Yzl_F_OxpQo',
+        'Nautilus Pompilius-Крылья https://www.youtube.com/watch?v=4owHHfZBsyI',
+        'Nautilus Pompilius-Зверь https://www.youtube.com/watch?v=Ez3RGAPhx84',
+        'Nautilus Pompilius-Матерь богов https://www.youtube.com/watch?v=GbX-UqR3D6A',
+        'Агата Кристи-Как на войне https://www.youtube.com/watch?v=1fm1XCJAY0s',]
 
 pop_music= ['Руки Вверх!-18 мне уже', 'Руки Вверх!-Выпускной', 'Руки Вверх!-Когда мы были молодыми',
             'Руки Вверх!-Студент', 'Руки Вверх!-Ай-яй-яй', 'Иванушки International-Тополиный пух',
