@@ -1,62 +1,108 @@
 import random
 
+from aiogram import Router
 from aiogram import Bot, Dispatcher
 from aiogram.types import Message
 from aiogram.filters import Text, Command
-
-
+from aiogram import Bot, Dispatcher
+from aiogram.filters import CommandStart, Text
+from aiogram.types import (KeyboardButton, Message, ReplyKeyboardMarkup,
+                         ReplyKeyboardRemove)
+from aiogram import Router
+router: Router = Router()
 # Вместо BOT TOKEN HERE нужно вставить токен вашего бота,
 # полученный у @BotFather
 BOT_TOKEN: str = '6064408255:AAGBbsdGXRGz70OfVSxpp7mlVOQHxxogsVU'
 
-shutka = ["Я не знаю шуток","я не умею шутить"]
+rock = ['Metallica-Master Of Puppets', 'Metallica-Sad But True', 'Metallica-Fade To Black',
+        'Nirvana-Smells Like Teen Spirit', 'Nirvana-Come As You Are', 'Nirvana-Heart-Shaped Box',
+        'КИНО-Хочу перемен', 'КИНО-Группа крови', 'КИНО-Звезда по имени Солнце', 'КИНО-Пачка сигарет',
+        'КИНО-Кончится лето', 'КИНО-Стук', 'КИНО-Последний герой', 'Би-2-Полковнику никто не пишет',
+        'Nautilus Pompilius-Крылья', 'Nautilus Pompilius-Зверь', 'Nautilus Pompilius-Матерь богов',
+        'Агата Кристи-Как на войне',]
+
+pop_music= ['Руки Вверх!-18 мне уже', 'Руки Вверх!-Выпускной', 'Руки Вверх!-Когда мы были молодыми',
+            'Руки Вверх!-Студент', 'Руки Вверх!-Ай-яй-яй', 'Иванушки International-Тополиный пух',
+            'Иванушки International-Снегири', 'Градусы-Научиться бы не париться', 'Градусы-Хочется',
+            'Ласковый май-Белые розы', 'Ласковый май-Седая ночь', 'Ласковый май-Детство',]
+
+classic=['Бах-Nocturne in E Flat Major Op. 9, No. 2', 'Бах-Sonata in C Major K.330: I. Allegro',
+         'Бах-Sonata Op. 13, No. 8 in C Minor', 'Бах-Sonatina in C Major Op. 36, Spiritoso']
+
+punk_rock =['Король и Шут-Театральный демон вот ссылка: https://www.youtube.com/watch?v=j0i_E3Btuo0']
+
+
 # Создаем объекты бота и диспетчера
 bot: Bot = Bot(BOT_TOKEN)
 dp: Dispatcher = Dispatcher()
 
+# Создаем объекты кнопок
+button_1: KeyboardButton = KeyboardButton(text='Грустное')
+button_2: KeyboardButton = KeyboardButton(text='Веселое')
 
-# Количество попыток, доступных пользователю в игре
-ATTEMPTS: int = 5
+# Создаем объект клавиатуры, добавляя в него кнопки
+keyboard: ReplyKeyboardMarkup = ReplyKeyboardMarkup(
+                                    keyboard=[[button_1, button_2]])
 
+# Создаем кнопки игровой клавиатуры
+button_1: KeyboardButton = KeyboardButton(text='Рок')
+button_2: KeyboardButton = KeyboardButton(text='Панк рок')
+button_3: KeyboardButton = KeyboardButton(text='Поп-музыка')
+button_4: KeyboardButton = KeyboardButton(text='Классическая')
+# Создаем игровую клавиатуру с кнопками "Камень 🗿",
+# "Ножницы ✂" и "Бумага 📜" как список списков
+game_kb: ReplyKeyboardMarkup = ReplyKeyboardMarkup(
+                                    keyboard=[[button_1],
+                                              [button_2],
+                                              [button_3],
+                                              [button_4]],
+                                    resize_keyboard=True)
 # Словарь, в котором будут храниться данные пользователя
-users: dict = {}
 
 
-# Функция возвращающая случайное целое число от 1 до 100
-def get_random_number() -> int:
-    return random.randint(1, 100)
+
 
 
 # Этот хэндлер будет срабатывать на команду "/start"
 @dp.message(Command(commands=['start']))
 async def process_start_command(message: Message):
-    await message.answer('Привет!\nДавай сыграем в игру "Угадай число"?\n\n'
-                         'Чтобы получить правила игры и список доступных '
-                         'команд - отправьте команду /help')
+    await message.answer('Привет!\nкакая тебе музыка нравится,',
+                         reply_markup=keyboard)
     # Если пользователь только запустил бота и его нет в словаре '
     # 'users - добавляем его в словарь
-    if message.from_user.id not in users:
-        users[message.from_user.id] = {'in_game': False,
-                                       'secret_number': None,
-                                       'attempts': None,
-                                       'total_games': 0,
-                                       'wins': 0}
 
 
-@dp.message(Command(commands=['smeh']))
-async def process_start_command(message: Message):
-    await message.answer('Привет!\nХочешь шутку?'
-                         "\nТогда напиши команду /prank")
+# Этот хэндлер срабатывает на согласие пользователя играть в игру
+@dp.message(Text(text="Грустное"))
+async def process_yes_answer(message: Message):
+    await message.answer('Ясно, а какой тип музыки тебе нравится?', reply_markup=game_kb)
 
-@dp.message(Command(commands=['prank']))
-async def process_start_command(message: Message):
-    await message.answer(random.choice(shutka))
+@dp.message(Text(text="Веселое"))
+async def process_yes_answer(message: Message):
+    await message.answer('Хорошо, а какой тип музыки тебе нравится?', reply_markup=game_kb)
 
+@dp.message(Text(text="Рок"))
+async def process_yes_answer(message: Message):
+    await message.answer("Советую послушать")
+    await message.answer(random.choice(rock))
+@dp.message(Text(text="Панк рок"))
+async def process_yes_answer(message: Message):
+    await message.answer("Советую послушать")
+    await message.answer(random.choice(punk_rock))
+
+@dp.message(Text(text="Поп-музыка"))
+async def process_yes_answer(message: Message):
+    await message.answer('Советую послушать')
+    await message.answer(random.choice(pop_music))
+@dp.message(Text(text="Классическая"))
+async def process_yes_answer(message: Message):
+    await message.answer("Советую послушать")
+    await message.answer('Советую тебе послушать')
 # Этот хэндлер будет срабатывать на команду "/help"
 @dp.message(Command(commands=['help']))
 async def process_help_command(message: Message):
     await message.answer(f'Правила игры:\n\nЯ загадываю число от 1 до 100, '
-                         f'а вам нужно его угадать\nУ вас есть {ATTEMPTS} '
+                         f'а вам нужно его угадать\nУ вас есть  '
                          f'попыток\n\nДоступные команды:\n/help - правила '
                          f'игры и список команд\n/cancel - выйти из игры\n'
                          f'/stat - посмотреть статистику\n\nДавай сыграем?')
@@ -84,71 +130,6 @@ async def process_cancel_command(message: Message):
 
 
 # Этот хэндлер будет срабатывать на согласие пользователя сыграть в игру
-@dp.message(Text(text=['Да', 'Давай', 'Сыграем', 'Игра',
-                       'Играть', 'Хочу играть'], ignore_case=True))
-async def process_positive_answer(message: Message):
-
-    if not users[message.from_user.id]['in_game']:
-        await message.answer('Ура!\n\nЯ загадал число от 1 до 100, '
-                             'попробуй угадать!')
-        users[message.from_user.id]['in_game'] = True
-        users[message.from_user.id]['secret_number'] = get_random_number()
-        users[message.from_user.id]['attempts'] = ATTEMPTS
-    else:
-        await message.answer('Пока мы играем в игру я могу '
-                             'реагировать только на числа от 1 до 100 '
-                             'и команды /cancel и /stat')
-
-
-# Этот хэндлер будет срабатывать на отказ пользователя сыграть в игру
-@dp.message(Text(text=['Нет', 'Не', 'Не хочу', 'Не буду'], ignore_case=True))
-async def process_negative_answer(message: Message):
-    if not users[message.from_user.id]['in_game']:
-        await message.answer('Жаль :(\n\nЕсли захотите поиграть - просто '
-                             'напишите об этом')
-    else:
-        await message.answer('Мы же сейчас с вами играем. Присылайте, '
-                             'пожалуйста, числа от 1 до 100')
-
-
-# Этот хэндлер будет срабатывать на отправку пользователем чисел от 1 до 100
-@dp.message(lambda x: x.text and x.text.isdigit() and 1 <= int(x.text) <= 100)
-async def process_numbers_answer(message: Message):
-    if users[message.from_user.id]['in_game']:
-        if int(message.text) == users[message.from_user.id]['secret_number']:
-            await message.answer('Ура!!! Вы угадали число!\n\n'
-                                 'Может, сыграем еще?')
-            users[message.from_user.id]['in_game'] = False
-            users[message.from_user.id]['total_games'] += 1
-            users[message.from_user.id]['wins'] += 1
-        elif int(message.text) > users[message.from_user.id]['secret_number']:
-            await message.answer('Мое число меньше')
-            users[message.from_user.id]['attempts'] -= 1
-        elif int(message.text) < users[message.from_user.id]['secret_number']:
-            await message.answer('Мое число больше')
-            users[message.from_user.id]['attempts'] -= 1
-
-        if users[message.from_user.id]['attempts'] == 0:
-            await message.answer(
-                    f'К сожалению, у вас больше не осталось '
-                    f'попыток. Вы проиграли :(\n\nМое число '
-                    f'было {users[message.from_user.id]["secret_number"]}'
-                    f'\n\nДавайте сыграем еще?')
-            users[message.from_user.id]['in_game'] = False
-            users[message.from_user.id]['total_games'] += 1
-    else:
-        await message.answer('Мы еще не играем. Хотите сыграть?')
-
-
-# Этот хэндлер будет срабатывать на остальные текстовые сообщения
-@dp.message()
-async def process_other_text_answers(message: Message):
-    if users[message.from_user.id]['in_game']:
-        await message.answer('Мы же сейчас с вами играем. '
-                             'Присылайте, пожалуйста, числа от 1 до 100')
-    else:
-        await message.answer('Я довольно ограниченный бот, давайте '
-                             'просто сыграем в игру?')
 
 
 if __name__ == '__main__':
