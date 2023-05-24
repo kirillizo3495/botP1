@@ -12,7 +12,7 @@ from aiogram import Router
 router: Router = Router()
 # Вместо BOT TOKEN HERE нужно вставить токен вашего бота,
 # полученный у @BotFather
-BOT_TOKEN: str = '6064408255:AAGBbsdGXRGz70OfVSxpp7mlVOQHxxogsVU'
+BOT_TOKEN: str = '5956577751:AAFCOyJkDie5tBOjOSPFhThgP-U0vqst5b4'
 
 rock = ['Metallica-Master Of Puppets https://www.youtube.com/watch?v=E0ozmU9cJDg',
         'Metallica-Sad But True https://www.youtube.com/watch?v=TpohVYomw2o',
@@ -104,7 +104,7 @@ yes_no: ReplyKeyboardMarkup = ReplyKeyboardMarkup(
 # Этот хэндлер будет срабатывать на команду "/start"
 @dp.message(Command(commands=['start']))
 async def process_start_command(message: Message):
-    await message.answer('Привет!\nкак настроение?,',
+    await message.answer('Привет!\nЭтот бот поможет найти\nподходящую для каждого музыку.\nКстати как настроение?',
                          reply_markup=keyboard)
     # Если пользователь только запустил бота и его нет в словаре '
     # 'users - добавляем его в словарь
@@ -113,11 +113,11 @@ async def process_start_command(message: Message):
 # Этот хэндлер срабатывает на согласие пользователя играть в игру
 @dp.message(Text(text="Грустно😔"))
 async def process_yes_answer(message: Message):
-    await message.answer('Ясно, этот бот поможет найти подходящую песню. Кстати, а какой тип музыки тебе нравится?', reply_markup=game_kb)
+    await message.answer('Жаль, может хочешь послушать музыку?\nКакой тип музыки тебе нравится?', reply_markup=game_kb)
 
 @dp.message(Text(text="Весело😆"))
 async def process_yes_answer(message: Message):
-    await message.answer('Хорошо, этот бот поможет найти подходящую песню. Кстати, а какой тип музыки тебе нравится?', reply_markup=game_kb)
+    await message.answer('Хорошо, хочешь послушать музыку?\nКакой тип музыки тебе нравится?', reply_markup=game_kb)
 
 @dp.message(Text(text="Рок🎸"))
 async def process_yes_answer(message: Message):
